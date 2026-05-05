@@ -11,7 +11,7 @@ const proyectoService=(()=>{
     const eliminarProyectos = (idEliminar) => {
         proyectos=proyectos.filter(proyecto => proyecto.id !== idEliminar);
     }
-    const buscarProyectos = (idBuscado) => proyectos.find(proyecto => proyecto.id == idBuscado);
+    const buscarProyectos = (idBuscado) => proyectos.filter(proyecto => proyecto.id == idBuscado);
     return {obtenerProyectos, agregarProyectos, eliminarProyectos, buscarProyectos};
 })();
 
