@@ -1,0 +1,18 @@
+:root {
+  /* Colores Principales */
+  --color-primary: #2563eb;    /* Botones | Cajas*/
+  --color-secondary: #64748b;  /* Texto secundario */
+  --bg-app: #f8fafc;           /* Fondo general */
+  --text-main: #1e293b;        /* Texto principal */
+  
+  /* Tipografía */
+  --font-main: 'Inter', sans-serif;
+  --font-size-base: 16px;
+  --font-weight-bold: 600;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
