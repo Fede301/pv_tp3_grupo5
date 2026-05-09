@@ -1,0 +1,80 @@
+
+:root {
+  /* Colores Principales */
+  --color-primary:  #334155;    /* Botones | Cajas*/
+  --color-tex-primary: white;
+  --color-secondary: #64748b;  /* Texto secundario */
+  --fondo-general: #0f172a;           /* Fondo general */ 
+  --color-efecto  : #3b82f6;     /* Efectos de hover */
+  /* Tipografía */
+  --font-main: 'Inter', sans-serif;
+  
+}
+
+body{
+  background-color: var(--fondo-general);
+  color: var(--color-tex-primary);
+  margin: 0;
+  font-family: var(--font-main);
+}
+
+/* HEADER */
+header{
+  background-color: var(--color-primary);
+  color: var(--color-tex-primary); 
+  text-align: center;
+  padding: 20px;
+}
+
+/* NAV */
+.menu ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  background-color: var(--color-primary);
+}
+.menu li {
+  margin: 10px;
+}
+.menu a {
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  font-family:Georgia;
+}
+.menu a:hover {
+    color: #3b82f6;
+}
+main {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* ESTADÍSTICAS */
+.cards {
+  display: flex;
+  gap: 10px;
+}
+.card {
+  background-color: var(--color-primary);
+  padding: 20px;
+  flex: 1;
+  text-align: center;
+  border-radius: 8px;
+}
+.lista-novedades{
+  list-styile: none;
+  padding: 10;
+  background-color: var(--color-primary);
+  margin-bottom: 100px;
+  padding: 50px;
+  border-radius: 8px;
+}
+footer{
+  background-color: var(--color-primary);
+  color: var(--color-tex-primary); 
+  text-align: center;
+  padding: 0px;
+}
