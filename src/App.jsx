@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import ListaProyectos from './ListaProyectos' 
-import Footer from './Footer'
+//import Footer from './Footer'
 import './App.css'
 import './css/stylesindex.css' 
 import './css/stylesproyectos.css' 
@@ -28,7 +28,6 @@ function App() {
         <ListaProyectos />
       </main>
 
-      <Footer />
     </>
   )
 }
