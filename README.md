@@ -22,3 +22,10 @@ If you are developing a production application, we recommend using TypeScript wi
 3- Ramiro Ignacio Gutiérrez Quival | RamaGuti<br>
 4- Sivila Lucas Santiago | santtiago8<br>
 5- Juan Manuel Viviano Alancay | AlancayJuan<br>
+## Descripción <br>
+Este proyecto consiste en una aplicación web desarrollada con React y Vite, que tiene por objetivo ser una plataforma dinámica y funcional para la gestión de proyectos.
+### Funcionalidades
+- Visualización Dinámica: Renderizado automático de proyectos desde un servicio lógico utilizando `useState` y `.map()`.
+- Gestión de Proyectos: Permite agregar nuevos registros y eliminar proyectos existentes con actualización inmediata de la interfaz.
+- Búsqueda en Tiempo Real: Filtro de búsqueda integrado que localiza proyectos por título mientras el usuario escribe.
+- Arquitectura Modular: Separación clara entre componentes de interfaz y lógica de servicios.
