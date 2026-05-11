@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import ListaProyectos from './ListaProyectos'
-
+import ListaProyectos from './components/ListaProyectos'
 import './App.css'
 import './css/stylesindex.css'
 import './css/stylesproyectos.css'

@@ -1,5 +1,6 @@
+import '../css/stylesproyectos.css';
 import { useState } from 'react';
-import { obtenerProyectos,eliminarProyectos,buscarProyecto} from './services/proyectoService';
+import { obtenerProyectos,eliminarProyectos,buscarProyecto} from '../services/proyectoService';
 const ListaProyectos = () => {
     const [proyectos, setProyectos] = useState(obtenerProyectos());
     
