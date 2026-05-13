@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ProyectoCard = ({datosProyecto}) => {
+const ProyectoCard = ({datosProyecto, handleElimiminar}) => {
   return (
     <div>
         <h3>{datosProyecto.titulo}</h3>

@@ -21,7 +21,7 @@ const ListaProyectos = () => {
             <input type="text" placeholder="Buscar proyecto por título " onChange={handleBuscar} />
             <div className="proyectos-grid">
                 {proyectos.map((proyecto, id) => (
-                    <ProyectoCard key={id} datosProyecto={proyecto}/>
+                    <ProyectoCard key={id} datosProyecto={proyecto} handleElimiminar={handleElimiminar}/>
                 ))}
             </div>
         </div>
