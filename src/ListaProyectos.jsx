@@ -1,22 +1,26 @@
 import { useState } from 'react';
-import { obtenerProyectos,eliminarProyectos,buscarProyecto} from './services/proyectoService';
+import proyectoService, { obtenerProyectos, eliminarProyectos, buscarproyecto } from './services/proyectoService';
 const ListaProyectos = () => {
     const [proyectos, setProyectos] = useState(obtenerProyectos());
-    
-    const handleElimiminar=(id)=>{
+    const [busqueda, setbusqueda] = useState("");
+    const handleElimiminar = (id) => {
         eliminarProyectos(id);
-        const listaActualizada=obtenerProyectos();
+        const listaActualizada = obtenerProyectos();
         setProyectos(listaActualizada);
     }
-    const handleBuscar=(evento)=>{
-        const texto=evento.target.value;
-        const resultado=buscarProyecto(texto);
-        setProyectos(resultado);
-    }
+    const handlebuscar = (e) => {
+        const valor = (e.target.value);
+        setbusqueda(valor);
+        setProyectos(proyectoService.buscarproyecto(valor));
+    };
     return (
         <div>
             <h2>Lista de Proyectos</h2>
-            <input type="text" placeholder="Buscar proyecto por título " onChange={handleBuscar} />
+            <input type="text"
+                placeholder="Buscar proyecto por título "
+                value={busqueda}
+                onChange={handlebuscar}
+            />
             <div className="proyectos-grid">
                 {proyectos.map((proyecto) => (
                     <div key={proyecto.id}>
