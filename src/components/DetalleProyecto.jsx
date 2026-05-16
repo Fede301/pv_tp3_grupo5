@@ -7,7 +7,7 @@ const DetalleProyecto = ({ proyecto }) => {
     const { titulo, descripcion, recursos, equipo} = proyecto;
     
     return (
-        <section>
+        <div className="detalle-proyecto">
             <h2>{titulo}</h2>
             {descripcion.map((texto, index) => (
                 <p key={index}>{texto}</p>
@@ -26,7 +26,7 @@ const DetalleProyecto = ({ proyecto }) => {
                     </li>
                 ))}
             </ul>
-        </section>
+        </div>
     );
 };
 export default DetalleProyecto;
