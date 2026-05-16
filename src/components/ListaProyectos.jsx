@@ -2,9 +2,12 @@ import '../css/stylesproyectos.css';
 import { useState } from 'react';
 import { obtenerProyectos,eliminarProyectos,buscarProyecto} from '../services/proyectoService';
 import ProyectoCard from './ProyectoCard';
+import DetalleProyecto from './DetalleProyecto';
 const ListaProyectos = () => {
     const [proyectos, setProyectos] = useState(obtenerProyectos());
     const [busqueda, setBusqueda] = useState("");
+    
+    const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
     
     const handleElimiminar=(id)=>{
         eliminarProyectos(id);
@@ -22,8 +25,9 @@ const ListaProyectos = () => {
             <input type="text" placeholder="Buscar proyecto por título " value={busqueda} onChange={handleBuscar} />
             <div className="proyectos-grid">
                 {proyectos.map((proyecto, id) => (
-                    <ProyectoCard key={id} datosProyecto={proyecto} handleElimiminar={handleElimiminar}/>
+                    <ProyectoCard key={id} datosProyecto={proyecto} handleElimiminar={handleElimiminar} setProyectoSeleccionado={setProyectoSeleccionado}/>
                 ))}
+                <DetalleProyecto proyecto={proyectoSeleccionado} />
             </div>
         </div>
     );

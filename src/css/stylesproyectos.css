@@ -134,3 +134,13 @@ article a:hover {
 .caja-filtro select:focus {
     border-color: #3b82f6; 
 }
+
+/*estilo para ver detalle*/
+.detalle-proyecto{
+    background-color: var(--color-primary);
+    margin: 30px auto;
+    padding: 25px;
+    border-radius: 12px;
+    max-width: 900px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
