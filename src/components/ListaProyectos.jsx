@@ -1,5 +1,5 @@
 import '../css/stylesproyectos.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { obtenerProyectos, eliminarProyectos, buscarProyecto, agregarProyectos } from '../services/proyectoService';
 import ProyectoCard from './ProyectoCard';
 import DetalleProyecto from './DetalleProyecto';
@@ -8,7 +8,7 @@ const ListaProyectos = () => {
     const [proyectos, setProyectos] = useState(obtenerProyectos());
     const [busqueda, setBusqueda] = useState("");
     const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
-
+    const [fecha, setFecha] = useState("");
     const [formulario, setFormulario] = useState({
         titulo: "",
         categoria: "",
@@ -63,6 +63,21 @@ const ListaProyectos = () => {
             equipoRol: ""
         });
     };
+
+    const capturaFecha = () => {
+        const fechaActual = new Date();
+        let dia=fechaActual.toLocaleDateString();
+        let hora=fechaActual.toLocaleTimeString([],{
+            hour: '2-digit',
+            minute: '2-digit',
+            hour12: false
+        });
+        setFecha("Última actualización de la lista: "+dia+" a las "+hora+" hs.");
+    }
+
+    useEffect(() => {
+        capturaFecha();
+    },[proyectos])
 
     return (
         <div>
