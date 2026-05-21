@@ -1,5 +1,5 @@
 import '../css/stylesproyectos.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { obtenerProyectos, eliminarProyectos, buscarProyecto, agregarProyectos } from '../services/proyectoService';
 import ProyectoCard from './ProyectoCard';
 import DetalleProyecto from './DetalleProyecto';
@@ -9,6 +9,7 @@ const ListaProyectos = () => {
     const [busqueda, setBusqueda] = useState("");
     const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
     const [fecha, setFecha] = useState("");
+    const esPrimeraCarga = useRef(true);
     const [formulario, setFormulario] = useState({
         titulo: "",
         categoria: "",
@@ -76,6 +77,10 @@ const ListaProyectos = () => {
     }
 
     useEffect(() => {
+        if (esPrimeraCarga.current) {
+            esPrimeraCarga.current = false;
+            return;
+        }
         capturaFecha();
     },[proyectos])
 
@@ -113,7 +118,7 @@ const ListaProyectos = () => {
                     />
                 ))}
             </div>
-
+            {fecha && <p style={{ color: 'white', textAlign: 'center', margin: '20px 0' }}>{fecha}</p>}
             <DetalleProyecto proyecto={proyectoSeleccionado} />
         </div>
     );
