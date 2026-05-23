@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from 'react';
 import { obtenerProyectos, eliminarProyectos, buscarProyecto, agregarProyectos } from '../services/proyectoService';
 import ProyectoCard from './ProyectoCard';
 import DetalleProyecto from './DetalleProyecto';
+import FormularioProyecto from './FormularioProyecto'; // Importamos el nuevo componente
 
 const ListaProyectos = () => {
     const [proyectos, setProyectos] = useState(obtenerProyectos());
@@ -10,15 +11,6 @@ const ListaProyectos = () => {
     const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
     const [fecha, setFecha] = useState("");
     const esPrimeraCarga = useRef(true);
-    const [formulario, setFormulario] = useState({
-        titulo: "",
-        categoria: "",
-        estado: "",
-        descripcion: "",
-        recursoPdf: "",
-        equipoNombre: "",
-        equipoRol: ""
-    });
 
     const handleElimiminar = (id) => {
         eliminarProyectos(id);
@@ -31,15 +23,8 @@ const ListaProyectos = () => {
         setProyectos(buscarProyecto(value));
     };
 
-    const handleFormulario = (evento) => {
-        const { name, value } = evento.target;
-        setFormulario((prev) => ({ ...prev, [name]: value }));
-    };
-
-    const handleAgregar = () => {
-        const { titulo, categoria, estado, descripcion, recursoPdf, equipoNombre, equipoRol } = formulario;
-
-        if (!titulo || !categoria || !estado) return;
+    const handleAgregar = (datosDelFormulario) => {
+        const { titulo, categoria, estado, descripcion, recursoPdf, equipoNombre, equipoRol } = datosDelFormulario;
 
         const nuevoProyecto = {
             id: Date.now(),
@@ -53,28 +38,18 @@ const ListaProyectos = () => {
 
         agregarProyectos(nuevoProyecto);
         setProyectos(obtenerProyectos());
-
-        setFormulario({
-            titulo: "",
-            categoria: "",
-            estado: "",
-            descripcion: "",
-            recursoPdf: "",
-            equipoNombre: "",
-            equipoRol: ""
-        });
     };
 
     const capturaFecha = () => {
         const fechaActual = new Date();
-        let dia=fechaActual.toLocaleDateString();
-        let hora=fechaActual.toLocaleTimeString([],{
+        let dia = fechaActual.toLocaleDateString();
+        let hora = fechaActual.toLocaleTimeString([], {
             hour: '2-digit',
             minute: '2-digit',
             hour12: false
         });
-        setFecha("Última actualización de la lista: "+dia+" a las "+hora+" hs.");
-    }
+        setFecha("Última actualización de la lista: " + dia + " a las " + hora + " hs.");
+    };
 
     useEffect(() => {
         if (esPrimeraCarga.current) {
@@ -82,7 +57,7 @@ const ListaProyectos = () => {
             return;
         }
         capturaFecha();
-    },[proyectos])
+    }, [proyectos]);
 
     return (
         <div>
@@ -95,18 +70,7 @@ const ListaProyectos = () => {
                 onChange={handleBuscar}
             />
 
-
-            <div className="formulario">
-                <h3>Agregar Proyecto</h3>
-                <input type="text" name="titulo" placeholder="Título" value={formulario.titulo} onChange={handleFormulario} />
-                <input type="text" name="categoria" placeholder="Categoría" value={formulario.categoria} onChange={handleFormulario} />
-                <input type="text" name="estado" placeholder="Estado" value={formulario.estado} onChange={handleFormulario} />
-                <input type="text" name="descripcion" placeholder="Descripción" value={formulario.descripcion} onChange={handleFormulario} />
-                <input type="text" name="recursoPdf" placeholder="Ruta PDF" value={formulario.recursoPdf} onChange={handleFormulario} />
-                <input type="text" name="equipoNombre" placeholder="Nombre integrante" value={formulario.equipoNombre} onChange={handleFormulario} />
-                <input type="text" name="equipoRol" placeholder="Rol integrante" value={formulario.equipoRol} onChange={handleFormulario} />
-                <button onClick={handleAgregar}>Agregar Proyecto</button>
-            </div>
+            <FormularioProyecto onAgregar={handleAgregar} />
 
             <div className="proyectos-grid">
                 {proyectos.map((proyecto) => (
