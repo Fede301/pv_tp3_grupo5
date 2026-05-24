@@ -42,13 +42,17 @@ const ListaProyectos = () => {
 
     const capturaFecha = () => {
         const fechaActual = new Date();
-        let dia = fechaActual.toLocaleDateString();
+
+        const dia = String(fechaActual.getDate()).padStart(2, '0');
+        const mes = String(fechaActual.getMonth() + 1).padStart(2, '0');
+        const año = fechaActual.getFullYear();
+
         let hora = fechaActual.toLocaleTimeString([], {
             hour: '2-digit',
             minute: '2-digit',
             hour12: false
         });
-        setFecha("Última actualización de la lista: " + dia + " a las " + hora + " hs.");
+        setFecha(`Última actualización de la lista: ${dia}/${mes}/${año} a las ${hora} hs.`);
     };
 
     useEffect(() => {
