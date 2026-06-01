@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import ListaProyectos from './components/ListaProyectos'
 import './App.css'
 import './css/stylesindex.css'
 import './css/stylesproyectos.css'
 import Header from './components/Header'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
+import Dashboard from './views/Dashboard'
 function App() {
 
   const [count, setCount] = useState(0)
@@ -16,7 +16,7 @@ function App() {
       <Header />
       <Nav />
       <main>
-        <ListaProyectos />
+        <Dashboard />
       </main>
       <Footer />
     </>

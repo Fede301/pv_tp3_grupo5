@@ -1,9 +1,9 @@
 import '../css/stylesproyectos.css';
 import { useEffect, useState, useRef } from 'react';
 import { obtenerProyectos, eliminarProyectos, buscarProyecto, agregarProyectos } from '../services/proyectoService';
-import ProyectoCard from './ProyectoCard';
-import DetalleProyecto from './DetalleProyecto';
-import FormularioProyecto from './FormularioProyecto'; // Importamos el nuevo componente
+import ProyectoCard from '../components/ProyectoCard';
+import DetalleProyecto from '../components/DetalleProyecto';
+import FormularioProyecto from '../components/FormularioProyecto';
 
 const ListaProyectos = () => {
     const [proyectos, setProyectos] = useState(obtenerProyectos());
