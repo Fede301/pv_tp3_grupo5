@@ -21,9 +21,10 @@ function App() {
       <Nav />
       <main>
         <Routes>
-
-          <Route path="/" element={<Navigate to="/inicio" />} />
-          <Route path="inicio" element={<Dashboard />} />
+          {/*<Route path="/" element={<Navigate to="/inicio" />} />
+          <Route path="inicio" element={<Dashboard />} />*/}
+          <Route path="/" element={<Navigate to="/dashboard" />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="proyectos" element={<ListaProyectos />} />
           <Route path="/proyectos/:id" element={<DetalleProyecto />} />
           <Route path="/perfil" element={<PerfilUsuario />} />
