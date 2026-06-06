@@ -1,0 +1,18 @@
+/* Definís tus variables normalmente */
+:root {
+  --color-primary: #334155;
+  --color-tex-primary: white;
+  --color-secondary: #64748b;
+  --fondo-general: #0f172a;
+  --color-efecto: #3b82f6;
+  --font-main: 'Inter', sans-serif;
+}
+
+html:root, body {
+  --bs-primary: var(--color-primary);
+  --bs-secondary: var(--color-secondary);
+  --bs-body-bg: var(--fondo-general);
+  --bs-body-color: var(--color-tex-primary);
+  --bs-font-sans-serif: var(--font-main);
+}
+
