@@ -36,17 +36,33 @@ const FormularioProyecto = ({ onAgregar }) => {
     };
 
     return (
-        <div className="formulario">
-            <h3>Agregar Proyecto</h3>
-            <input type="text" name="titulo" placeholder="Título" value={formulario.titulo} onChange={handleFormulario} />
-            <input type="text" name="categoria" placeholder="Categoría" value={formulario.categoria} onChange={handleFormulario} />
-            <input type="text" name="estado" placeholder="Estado" value={formulario.estado} onChange={handleFormulario} />
-            <input type="text" name="descripcion" placeholder="Descripción" value={formulario.descripcion} onChange={handleFormulario} />
-            <input type="text" name="recursoPdf" placeholder="Ruta PDF" value={formulario.recursoPdf} onChange={handleFormulario} />
-            <input type="text" name="equipoNombre" placeholder="Nombre integrante" value={formulario.equipoNombre} onChange={handleFormulario} />
-            <input type="text" name="equipoRol" placeholder="Rol integrante" value={formulario.equipoRol} onChange={handleFormulario} />
-            
-            <button onClick={handleSubmit}>Agregar Proyecto</button>
+        <div id='formulario' className="modal fade">
+            <div className='modal-dialog'>
+                <div className='modal-content'>
+
+                    <div className='modal-header'>
+                        <h3>Nuevo Proyecto</h3>
+                    </div>
+                    <div className='modal-body'>
+                        <label htmlFor="titulo" className='form-label'>Título</label>
+                        <input type="text" id="titulo" name="titulo" placeholder="Título" value={formulario.titulo} onChange={handleFormulario} className='form-control' />
+                        <label htmlFor="categoria" className='form-label'>Categoría</label>
+                        <input type="text" id="categoria" name="categoria" placeholder="Categoría" value={formulario.categoria} onChange={handleFormulario} className='form-control' />
+                        <label htmlFor="estado" className='form-label'>Estado</label>
+                        <input type="text" id="estado" name="estado" placeholder="Estado" value={formulario.estado} onChange={handleFormulario} className='form-control' />
+                        <label htmlFor="descripcion" className='form-label'>Descripción</label>
+                        <input type="text" id="descripcion" name="descripcion" placeholder="Descripción" value={formulario.descripcion} onChange={handleFormulario} className='form-control' />
+                        <label htmlFor="recursoPdf" className='form-label'>Ruta PDF</label>
+                        <input type="text" id="recursoPdf" name="recursoPdf" placeholder="Ruta PDF" value={formulario.recursoPdf} onChange={handleFormulario} className='form-control' />
+                        <label htmlFor="equipoNombre" className='form-label'>Nombre integrante</label>
+                        <input type="text" id="equipoNombre" name="equipoNombre" placeholder="Nombre integrante" value={formulario.equipoNombre} onChange={handleFormulario} className='form-control' />
+                        <label htmlFor="equipoRol" className='form-label'>Rol integrante</label>
+                        <input type="text" id="equipoRol" name="equipoRol" placeholder="Rol integrante" value={formulario.equipoRol} onChange={handleFormulario} className='form-control' />
+
+                        <button onClick={handleSubmit} className='mt-3 btn btn-primary'>Agregar Proyecto</button>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };

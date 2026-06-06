@@ -66,15 +66,18 @@ const ListaProyectos = () => {
     return (
         <div className='border-1 border container'>
             <h2>Lista de Proyectos</h2>
+            <div className='d-flex gap-2 mb-5'>
 
-            <input
-                type="text"
-                placeholder="Buscar proyecto por título"
-                value={busqueda}
-                onChange={handleBuscar}
-                className='form-control'
-            />
-            <FormularioProyecto onAgregar={handleAgregar} />
+                <input
+                    type="text"
+                    placeholder="Buscar proyecto por título"
+                    value={busqueda}
+                    onChange={handleBuscar}
+                    className='form-control'
+                />
+                <button className='btn btn-success text-nowrap' data-bs-toggle="modal" data-bs-target="#formulario">+ Agregar</button>
+                <FormularioProyecto onAgregar={handleAgregar} />
+            </div>
 
             <div className="row row-cols-2 g-4">
                 {proyectos.map((proyecto) => (
