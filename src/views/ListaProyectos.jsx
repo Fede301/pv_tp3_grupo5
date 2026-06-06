@@ -64,7 +64,7 @@ const ListaProyectos = () => {
     }, [proyectos]);
 
     return (
-        <div>
+        <div className='border-1 border container'>
             <h2>Lista de Proyectos</h2>
 
             <input
@@ -72,11 +72,11 @@ const ListaProyectos = () => {
                 placeholder="Buscar proyecto por título"
                 value={busqueda}
                 onChange={handleBuscar}
+                className='form-control'
             />
-
             <FormularioProyecto onAgregar={handleAgregar} />
 
-            <div className="proyectos-grid">
+            <div className="row row-cols-2 g-4">
                 {proyectos.map((proyecto) => (
                     <ProyectoCard
                         key={proyecto.id}
