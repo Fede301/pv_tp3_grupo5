@@ -1,4 +1,3 @@
-import '../css/stylesproyectos.css';
 import { useEffect, useState, useRef } from 'react';
 import { obtenerProyectos, eliminarProyectos, buscarProyecto, agregarProyectos } from '../services/proyectoService';
 import ProyectoCard from '../components/ProyectoCard';
