@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { Modal, Button, Form } from 'react-bootstrap';
 
-const FormularioProyecto = ({ onAgregar }) => {
+const FormularioProyecto = ({ show, onHide, onAgregar }) => {
 
     const [formulario, setFormulario] = useState({
         titulo: "",
@@ -36,37 +37,31 @@ const FormularioProyecto = ({ onAgregar }) => {
     };
 
     return (
-        <div id='formulario' className="modal fade">
-            <div className='modal-dialog'>
-                <div className='modal-content'>
-
-                    <div className='modal-header'>
-                        <h3>Nuevo Proyecto</h3>
-                    </div>
-                    <div className='modal-body'>
-                        <label htmlFor="titulo" className='form-label'>Título</label>
-                        <input type="text" id="titulo" name="titulo" placeholder="Título" value={formulario.titulo} onChange={handleFormulario} className='form-control' />
-                        <label htmlFor="categoria" className='form-label'>Categoría</label>
-                        <input type="text" id="categoria" name="categoria" placeholder="Categoría" value={formulario.categoria} onChange={handleFormulario} className='form-control' />
-                        <label htmlFor="estado" className='form-label'>Estado</label>
-                        <input type="text" id="estado" name="estado" placeholder="Estado" value={formulario.estado} onChange={handleFormulario} className='form-control' />
-                        <label htmlFor="descripcion" className='form-label'>Descripción</label>
-                        <input type="text" id="descripcion" name="descripcion" placeholder="Descripción" value={formulario.descripcion} onChange={handleFormulario} className='form-control' />
-                        <label htmlFor="recursoPdf" className='form-label'>Ruta PDF</label>
-                        <input type="text" id="recursoPdf" name="recursoPdf" placeholder="Ruta PDF" value={formulario.recursoPdf} onChange={handleFormulario} className='form-control' />
-                        <label htmlFor="equipoNombre" className='form-label'>Nombre integrante</label>
-                        <input type="text" id="equipoNombre" name="equipoNombre" placeholder="Nombre integrante" value={formulario.equipoNombre} onChange={handleFormulario} className='form-control' />
-                        <label htmlFor="equipoRol" className='form-label'>Rol integrante</label>
-                        <input type="text" id="equipoRol" name="equipoRol" placeholder="Rol integrante" value={formulario.equipoRol} onChange={handleFormulario} className='form-control' />
-
-                        <div className='modal-footer mt-4'>
-                            <button data-bs-dismiss="modal" className='btn btn-danger'>Cerrar</button>
-                            <button onClick={handleSubmit} className='btn btn-success'>Agregar Proyecto</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <Modal show={show} onHide={onHide}>
+            <Modal.Header closeButton>
+                <Modal.Title>Nuevo Proyecto</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Form.Label htmlFor="titulo">Título</Form.Label>
+                <Form.Control type="text" id="titulo" name="titulo" placeholder="Título" value={formulario.titulo} onChange={handleFormulario} />
+                <Form.Label htmlFor="categoria">Categoría</Form.Label>
+                <Form.Control type="text" id="categoria" name="categoria" placeholder="Categoría" value={formulario.categoria} onChange={handleFormulario} />
+                <Form.Label htmlFor="estado">Estado</Form.Label>
+                <Form.Control type="text" id="estado" name="estado" placeholder="Estado" value={formulario.estado} onChange={handleFormulario} />
+                <Form.Label htmlFor="descripcion">Descripción</Form.Label>
+                <Form.Control type="text" id="descripcion" name="descripcion" placeholder="Descripción" value={formulario.descripcion} onChange={handleFormulario} />
+                <Form.Label htmlFor="recursoPdf">Ruta PDF</Form.Label>
+                <Form.Control type="text" id="recursoPdf" name="recursoPdf" placeholder="Ruta PDF" value={formulario.recursoPdf} onChange={handleFormulario} />
+                <Form.Label htmlFor="equipoNombre">Nombre integrante</Form.Label>
+                <Form.Control type="text" id="equipoNombre" name="equipoNombre" placeholder="Nombre integrante" value={formulario.equipoNombre} onChange={handleFormulario} />
+                <Form.Label htmlFor="equipoRol">Rol integrante</Form.Label>
+                <Form.Control type="text" id="equipoRol" name="equipoRol" placeholder="Rol integrante" value={formulario.equipoRol} onChange={handleFormulario} />
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="danger" onClick={onHide}>Cerrar</Button>
+                <Button variant="success" onClick={handleSubmit}>Agregar Proyecto</Button>
+            </Modal.Footer>
+        </Modal>
     );
 };
 

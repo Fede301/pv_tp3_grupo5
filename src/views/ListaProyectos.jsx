@@ -3,12 +3,16 @@ import { obtenerProyectos, eliminarProyectos, buscarProyecto, agregarProyectos }
 import ProyectoCard from '../components/ProyectoCard';
 import DetalleProyecto from './DetalleProyecto';
 import FormularioProyecto from '../components/FormularioProyecto';
+import { Container, Row, Button, Form, Alert, Toast, ToastContainer } from "react-bootstrap";
+import RegistroActividad from '../components/RegistroActividad';
 
 const ListaProyectos = () => {
     const [proyectos, setProyectos] = useState(obtenerProyectos());
     const [busqueda, setBusqueda] = useState("");
     const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
     const [fecha, setFecha] = useState("");
+    const [showModal, setShowModal] = useState(false);
+    const [showCartel, setShowCartel] = useState(true);
     const esPrimeraCarga = useRef(true);
 
     const handleElimiminar = (id) => {
@@ -52,6 +56,7 @@ const ListaProyectos = () => {
             hour12: false
         });
         setFecha(`Última actualización de la lista: ${dia}/${mes}/${año} a las ${hora} hs.`);
+        setShowCartel(true);
     };
 
     useEffect(() => {
@@ -63,22 +68,21 @@ const ListaProyectos = () => {
     }, [proyectos]);
 
     return (
-        <div className='container'>
+        <Container>
             <h2>Lista de Proyectos</h2>
             <div className='d-flex gap-2 mb-5'>
 
-                <input
+                <Form.Control
                     type="text"
                     placeholder="Buscar proyecto por título"
                     value={busqueda}
                     onChange={handleBuscar}
-                    className='form-control'
                 />
-                <button className='btn btn-success text-nowrap' data-bs-toggle="modal" data-bs-target="#formulario">+ Agregar</button>
-                <FormularioProyecto onAgregar={handleAgregar} />
+                <Button variant="success" className="text-nowrap" onClick={() => setShowModal(true)}>+ Agregar</Button>
+                <FormularioProyecto show={showModal} onHide={() => setShowModal(false)} onAgregar={handleAgregar} />
             </div>
 
-            <div className="row row-cols-2 g-4">
+            <Row xs={2} className="g-4">
                 {proyectos.map((proyecto) => (
                     <ProyectoCard
                         key={proyecto.id}
@@ -87,9 +91,9 @@ const ListaProyectos = () => {
                         setProyectoSeleccionado={setProyectoSeleccionado}
                     />
                 ))}
-            </div>
-            {fecha && <p style={{ color: 'white', textAlign: 'center', margin: '20px 0' }}>{fecha}</p>}
-        </div>
+            </Row>
+            <RegistroActividad fecha={fecha} mostrarCartel={showCartel} setMostrarCartel={setShowCartel}/>
+        </Container>
     );
 };
 

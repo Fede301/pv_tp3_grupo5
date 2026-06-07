@@ -1,26 +1,27 @@
-import React from 'react'
 import { Link } from 'react-router-dom';
+import { Card, Button, Badge, Col, Row } from 'react-bootstrap';
 
 const ProyectoCard = ({ datosProyecto, handleElimiminar, setProyectoSeleccionado }) => {
   return (
-    <div className='col'>
-
-      <div className='card h-100 '>
-        <h3>{datosProyecto.titulo}</h3>
-        <p>Categoría: {datosProyecto.categoria}</p>
-        <p>Estado: <span className="badge rounded-pill text-bg-light">{datosProyecto.estado}</span></p>
-        <div className='px-5 row gap-1'>
-
-          <Link to={`/proyectos/${datosProyecto.id}`} className='btn btn-outline-primary'>Ver detalle </Link>
-
-          <button onClick={() => handleElimiminar(datosProyecto.id)} className='btn btn-outline-danger'>Eliminar</button>
-
-          { /* <button onClick={() => setProyectoSeleccionado(datosProyecto)}>Ver detalle</button> */}
-
-        </div>
-
-      </div>
-    </div>
+    <Col sm={6}>
+      <Card className="h-100">
+        <Card.Body>
+          <Card.Title>{datosProyecto.titulo}</Card.Title>
+          <Card.Text>Categoría: {datosProyecto.categoria}</Card.Text>
+          <Card.Text>
+            Estado: <Badge bg="light" text="dark" className="rounded-pill">{datosProyecto.estado}</Badge>
+          </Card.Text>
+          <Row className="p-1 g-1">
+          <Button as={Link} to={`/proyectos/${datosProyecto.id}`} variant="primary">
+            Ver detalle
+          </Button>
+          <Button onClick={() => handleElimiminar(datosProyecto.id)} variant="outline-danger">
+            Eliminar
+          </Button>
+          </Row>
+        </Card.Body>
+      </Card>
+    </Col>
   )
 }
 
