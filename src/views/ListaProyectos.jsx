@@ -89,7 +89,6 @@ const ListaProyectos = () => {
                 ))}
             </div>
             {fecha && <p style={{ color: 'white', textAlign: 'center', margin: '20px 0' }}>{fecha}</p>}
-            <DetalleProyecto proyecto={proyectoSeleccionado} />
         </div>
     );
 };
