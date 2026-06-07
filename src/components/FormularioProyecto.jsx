@@ -59,7 +59,10 @@ const FormularioProyecto = ({ onAgregar }) => {
                         <label htmlFor="equipoRol" className='form-label'>Rol integrante</label>
                         <input type="text" id="equipoRol" name="equipoRol" placeholder="Rol integrante" value={formulario.equipoRol} onChange={handleFormulario} className='form-control' />
 
-                        <button onClick={handleSubmit} className='mt-3 btn btn-primary'>Agregar Proyecto</button>
+                        <div className='modal-footer mt-4'>
+                            <button data-bs-dismiss="modal" className='btn btn-danger'>Cerrar</button>
+                            <button onClick={handleSubmit} className='btn btn-success'>Agregar Proyecto</button>
+                        </div>
                     </div>
                 </div>
             </div>
