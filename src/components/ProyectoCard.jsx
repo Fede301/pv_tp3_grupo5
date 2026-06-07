@@ -8,7 +8,7 @@ const ProyectoCard = ({ datosProyecto, handleElimiminar, setProyectoSeleccionado
       <div className='card h-100 '>
         <h3>{datosProyecto.titulo}</h3>
         <p>Categoría: {datosProyecto.categoria}</p>
-        <p>Estado: {datosProyecto.estado}</p>
+        <p>Estado: <span className="badge rounded-pill text-bg-light">{datosProyecto.estado}</span></p>
         <div className='px-5 row gap-1'>
 
           <Link to={`/proyectos/${datosProyecto.id}`} className='btn btn-outline-primary'>Ver detalle </Link>

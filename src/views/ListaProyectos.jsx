@@ -63,7 +63,7 @@ const ListaProyectos = () => {
     }, [proyectos]);
 
     return (
-        <div className='border-1 border container'>
+        <div className='container'>
             <h2>Lista de Proyectos</h2>
             <div className='d-flex gap-2 mb-5'>
 
