@@ -11,12 +11,12 @@ const ProyectoCard = ({ datosProyecto, handleElimiminar, setProyectoSeleccionado
         <p>Estado: {datosProyecto.estado}</p>
         <div className='px-5 row gap-1'>
 
-          <button onClick={() => handleElimiminar(datosProyecto.id)} className='btn btn-danger'>Eliminar</button>
+          <Link to={`/proyectos/${datosProyecto.id}`} className='btn btn-outline-primary'>Ver detalle </Link>
 
+          <button onClick={() => handleElimiminar(datosProyecto.id)} className='btn btn-outline-danger'>Eliminar</button>
 
           { /* <button onClick={() => setProyectoSeleccionado(datosProyecto)}>Ver detalle</button> */}
 
-          <Link to={`/proyectos/${datosProyecto.id}`} className='btn text-white' style={{backgroundColor: "#3b82f6"}}>Ver detalle </Link>
         </div>
 
       </div>
