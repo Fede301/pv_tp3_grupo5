@@ -88,3 +88,5 @@ const DetalleProyecto = () => {
 };
 
 export default DetalleProyecto;
+
+{/*pequeñña etiqueta para cambiar*/}
