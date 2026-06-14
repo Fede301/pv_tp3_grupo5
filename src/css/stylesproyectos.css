@@ -29,7 +29,7 @@
   font-family:Georgia;
 }
 .menu a:hover, article a:hover {
-    color: #3b82f6;
+    color: var(--color-efecto);
 }
 
 header {
@@ -53,7 +53,7 @@ h1, h2, h3, h4 {
   color: var(--bg-app);
 }
 
-h2 {
+h1, h2 {
   text-align: center; 
 }
 h3 {
@@ -84,7 +84,7 @@ article{
   background-color: #334155;
 }
 article a {
-  color: #3b82f6;
+  color: var(--color-efecto);
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s;
@@ -132,7 +132,7 @@ article a:hover {
 }
 
 .caja-filtro select:focus {
-    border-color: #3b82f6; 
+    border-color: var(--color-efecto); 
 }
 
 /*estilo para ver detalle*/
@@ -143,4 +143,11 @@ article a:hover {
     border-radius: 12px;
     max-width: 900px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+/* estilo para carta de proyecto */
+.proyecto-card-hover{
+  transition: all 0.15s ease-in-out;
+}
+.proyecto-card-hover:hover{
+  border-color: var(--color-efecto);
 }

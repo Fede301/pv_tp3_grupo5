@@ -68,8 +68,8 @@ const ListaProyectos = () => {
     }, [proyectos]);
 
     return (
-        <Container>
-            <h2>Lista de Proyectos</h2>
+        <Container className='mt-4'>
+            <h1 className='mb-4 fw-bold'>Lista de Proyectos</h1>
             <div className='d-flex gap-2 mb-5'>
 
                 <Form.Control
