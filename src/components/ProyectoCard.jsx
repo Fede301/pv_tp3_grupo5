@@ -4,7 +4,7 @@ import { Card, Button, Badge, Col, Row } from 'react-bootstrap';
 const ProyectoCard = ({ datosProyecto, handleElimiminar, setProyectoSeleccionado }) => {
   return (
     <Col sm={6}>
-      <Card className="h-100">
+      <Card className="proyecto-card-hover bg-dark text-white h-100 shadow-sm">
         <Card.Body>
           <Card.Title>{datosProyecto.titulo}</Card.Title>
           <Card.Text>Categoría: {datosProyecto.categoria}</Card.Text>

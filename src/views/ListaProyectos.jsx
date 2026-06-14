@@ -12,14 +12,15 @@ const ListaProyectos = () => {
     const [proyectoSeleccionado, setProyectoSeleccionado] = useState(null);
     const [fecha, setFecha] = useState("");
     const [showModal, setShowModal] = useState(false);
-    const [showCartel, setShowCartel] = useState(true);
-    const esPrimeraCarga = useRef(true);
+    const [showFecha, setShowFecha] = useState(false);
+    const actualizarFecha = useRef(false);
 
     const handleElimiminar = (id) => {
         eliminarProyectos(id);
         setProyectos(obtenerProyectos());
+        actualizarFecha.current = true;
     };
-
+    
     const handleBuscar = (evento) => {
         const { value } = evento.target;
         setBusqueda(value);
@@ -41,6 +42,7 @@ const ListaProyectos = () => {
 
         agregarProyectos(nuevoProyecto);
         setProyectos(obtenerProyectos());
+        actualizarFecha.current = true;
     };
 
     const capturaFecha = () => {
@@ -56,20 +58,19 @@ const ListaProyectos = () => {
             hour12: false
         });
         setFecha(`Última actualización de la lista: ${dia}/${mes}/${año} a las ${hora} hs.`);
-        setShowCartel(true);
+        setShowFecha(true);
     };
 
     useEffect(() => {
-        if (esPrimeraCarga.current) {
-            esPrimeraCarga.current = false;
-            return;
+        if (actualizarFecha.current) {
+            capturaFecha();
+            actualizarFecha.current = false;
         }
-        capturaFecha();
     }, [proyectos]);
 
     return (
-        <Container>
-            <h2>Lista de Proyectos</h2>
+        <Container className='mt-4'>
+            <h1 className='mb-4 fw-bold'>Lista de Proyectos</h1>
             <div className='d-flex gap-2 mb-5'>
 
                 <Form.Control
@@ -92,7 +93,7 @@ const ListaProyectos = () => {
                     />
                 ))}
             </Row>
-            <RegistroActividad fecha={fecha} mostrarCartel={showCartel} setMostrarCartel={setShowCartel}/>
+            <RegistroActividad fecha={fecha} mostrarCartel={showFecha} setMostrarCartel={setShowFecha}/>
         </Container>
     );
 };
